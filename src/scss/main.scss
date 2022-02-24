@@ -5,10 +5,371 @@
 @import "./abstracts/_abstracts-dir";
 
 //Base Styles
-@import "./base/_base-dir";
+@import "./base/__base-dir.scss";
 
 //Components
 @import "./components/_components-dir";
 
 //Layout
 @import "./layouts/_layouts-dir";
+//simple normalizer
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+// background image
+.background-image {
+  background-image: url(../images/rose.png);
+  // luminosity changes the colors from black and white to red
+  background-blend-mode: luminosity;
+  // center position & only repeat on vertical axis
+  background-position: center;
+  background-repeat: repeat-y;
+  // position fix
+  position: absolute;
+  top: 8vh;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  //repeat range
+  width: 99.1vw;
+  height: 411vh;
+  // z fix and opacity
+  z-index: -1;
+  opacity: 0.55;
+}
+body {
+  // hides scrollbar
+  overflow: auto;
+  background-color: rgb(88, 0, 0);
+  // flex direction for general structure
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  header {
+    // header size and position always on top
+    width: 99vw;
+    height: 8vh;
+    background-color: rgb(12, 12, 12);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    nav {
+      // nav is same size as header some shadow for depth
+      width: inherit;
+      height: inherit;
+      box-shadow: 2px 0px 50px;
+    }
+    ul {
+      //flex direction change
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      list-style: none;
+      // size same as parent
+      width: inherit;
+      height: inherit;
+      a {
+        text-decoration: none;
+        color: silver;
+        font-size: 2rem;
+        // text border effect made with the shadows for more depth and visual pleasing
+        text-shadow: -1px 2px 5px rgb(88, 0, 0), 1px 2px 5px rgb(88, 0, 0),
+          1px -2px 5px rgb(88, 0, 0), -1px -2px 5px rgb(88, 0, 0);
+      }
+    }
+  }
+  .typewriter {
+    // margin added so content isnt overlapped by header
+    margin-top: 18vh;
+    // flex direction change
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      color: silver;
+      font-size: 5rem;
+      // overflow added so that the animation works right
+      overflow: hidden;
+      // border right as proxy curser
+      border-right: 0.5rem solid rgb(255, 255, 255);
+      // display in one line only
+      white-space: nowrap;
+      // letter spacing can be adjusted to make each symbol appear on its own, a lot of pixel pushing
+      letter-spacing: 0.25rem;
+      // text border effect
+      text-shadow: -1px 2px 5px rgb(88, 0, 0), 1px 2px 5px rgb(88, 0, 0),
+        1px -2px 5px rgb(88, 0, 0), -1px -2px 5px rgb(88, 0, 0);
+      // typing animation -> steps for intervall
+      animation: typing 5s steps(40, end),
+        // cursor animation
+        blink-cursor 1s step-end infinite;
+    }
+  }
+}
+// animation concept changing the width of h1 overflow stops the letters from being shown before the container is wide enough -- 95% to hide some white space
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 95%;
+  }
+}
+@keyframes blink-cursor {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(255, 255, 255);
+  }
+}
+// cant add angle brackets in normal text so thats the fix for it
+h1::before {
+  content: "< ";
+}
+h1::after {
+  content: " >";
+}
+// general card design identical for all cards
+.card {
+  width: 80%;
+  height: 75vh;
+  background-color: rgb(12, 12, 12);
+  border: 1px solid silver;
+  border-radius: 10px;
+  box-shadow: 5px 5px 50px;
+  margin-top: 25vh;
+}
+// last card has the opposit margin as the first one for symetry
+.card:last-of-type {
+  margin-bottom: 18vh;
+}
+.about-me {
+  // flex direction change
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+  .portrait {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 15px rgb(0, 0, 0);
+    img {
+      width: inherit;
+      height: inherit;
+      border-radius: inherit;
+      &:hover {
+        animation: flip 3s infinite;
+      }
+    }
+  }
+  .text-about-me {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      font-size: 3rem;
+      color: silver;
+      text-shadow: -1px 2px 5px rgb(88, 0, 0), 1px 2px 5px rgb(88, 0, 0),
+        1px -2px 5px rgb(88, 0, 0), -1px -2px 5px rgb(88, 0, 0);
+    }
+    ul {
+      list-style: none;
+      margin-top: 5rem;
+      li {
+        color: silver;
+        font-size: 2rem;
+        text-shadow: -1px 2px 5px rgb(88, 0, 0), 1px 2px 5px rgb(88, 0, 0),
+          1px -2px 5px rgb(88, 0, 0), -1px -2px 5px rgb(88, 0, 0);
+      }
+    }
+  }
+}
+@keyframes flip {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2 {
+    font-size: 3rem;
+    color: silver;
+    text-shadow: -1px 2px 5px rgb(88, 0, 0), 1px 2px 5px rgb(88, 0, 0),
+      1px -2px 5px rgb(88, 0, 0), -1px -2px 5px rgb(88, 0, 0);
+    margin: 1.5rem auto;
+  }
+  .gridcontainer {
+    width: 100%;
+    height: inherit;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    .project-container {
+      width: 90%;
+      height: 90%;
+      background-color: rgba(12, 12, 12, 0.335);
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+      .project-image-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        a {
+          text-decoration: none;
+          h3 {
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: silver;
+            text-shadow: -1px 2px 5px rgb(88, 0, 0), 1px 2px 5px rgb(88, 0, 0),
+              1px -2px 5px rgb(88, 0, 0), -1px -2px 5px rgb(88, 0, 0);
+          }
+        }
+        img {
+          width: 400px;
+          height: 200px;
+          margin-bottom: 2%;
+          border-radius: 5px;
+          filter: grayscale(1);
+          &:hover {
+            filter: grayscale(0);
+            transition: 1s;
+          }
+        }
+      }
+    }
+  }
+}
+.contact {
+  // flex direction change once again
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  h2 {
+    // margin top adjusted for better feel
+    margin-top: 4rem;
+    font-size: 3rem;
+    color: silver;
+        text-shadow: -1px 2px 5px rgb(88, 0, 0), 1px 2px 5px rgb(88, 0, 0),
+          1px -2px 5px rgb(88, 0, 0), -1px -2px 5px rgb(88, 0, 0);
+  }
+  .contact-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-around;
+    width: 90%;
+    height: 50%;
+  }
+  form {
+    // flex direction change once again
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+    input{
+      width: 85%;
+      background-color: rgb(12, 12, 12);
+      border: none;
+      border-bottom: 1px solid silver;
+      color:silver;
+      font-size:1.5rem;
+      text-align: center;
+      outline: silver;
+      &:last-of-type{
+        border: 1px solid silver;
+        padding: 10px;
+        width: 40%;
+        &:hover{
+          background-color: rgb(88, 0, 0);
+          transition: .5s;
+        }
+      }
+    }
+    textarea{
+      width: 85%;
+      height:45%;
+      background-color: rgb(12, 12, 12);
+      font-size: 1.5rem;
+      border:silver 1px solid;
+      text-align: center;
+
+    }
+    
+  }
+  .contact-info {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    div {
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h3 {
+        font-size: 1.5rem;
+        color: silver;
+        text-shadow: -1px 2px 3px rgb(88, 0, 0), 1px 2px 3px rgb(88, 0, 0),
+          1px -2px 3px rgb(88, 0, 0), -1px -2px 3px rgb(88, 0, 0);
+      }
+      p{
+        color: silver;
+        margin-top: 5%;
+        font-size: 1.5rem;
+        text-shadow: -1px 2px 3px rgb(88, 0, 0), 1px 2px 3px rgb(88, 0, 0),
+        1px -2px 3px rgb(88, 0, 0), -1px -2px 3px rgb(88, 0, 0);
+      }
+      a{
+        margin-top: 5%;
+        padding: 15px;
+        color: silver;
+        text-decoration: none;
+        border: silver 1px solid;
+        font-size: 1.5rem;
+        box-shadow: 0 0 10px rgb(88, 0, 0);
+        text-shadow: -1px 2px 3px rgb(88, 0, 0), 1px 2px 3px rgb(88, 0, 0),
+        1px -2px 3px rgb(88, 0, 0), -1px -2px 3px rgb(88, 0, 0);
+        &:hover{
+          background-color: rgb(88, 0, 0);
+          border:silver 1px solid;
+        }
+      }
+    }
+  }
+}
+// footer with same size as header again symetry
+footer {
+  width: 99.1vw;
+  height: 8vh;
+  background-color: rgb(12, 12, 12);
+  box-shadow: 2px 0px 50px;
+}

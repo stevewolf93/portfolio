@@ -4,12 +4,114 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project-name</title>
+    <title>Portfolio</title>
     <link rel="stylesheet" href="./styles/main.css" />
   </head>
   <body>
-    <!-- Your element goes here -->
-     <!-- Custom scripts, edit above this line -->
+    <!-- background image  -->
+    <div class="background-image"></div>
+    <!-- header part, classic structure with links for in page jumps -->
+    <header>
+      <nav>
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="#about-me">About Me</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- typewriter container for the typewriter animation-->
+    <div class="typewriter card" id="typewriter">
+    <h1>My Journey as a Web-Developer</My></h1>
+  </div>
+  <!-- About me part -->
+  <div class="card about-me" id="about-me">
+    <div class="portrait">
+      <img src="./images/portrait.png" alt="">
+    </div>
+    <div class="text-about-me">
+      <h2>Who is Steve?</h2>
+      <ul>
+        <li>A nerd</li>
+        <li>A student</li>
+        <li>A dog owner</li>
+        <li>A web developer</li>
+        <li>A chaos organizer</li>
+        <li>An honest dude</li>
+        <li>A RPG lover</li>
+        <li>A dreamer</li>
+        <li>Insane</li>
+      </ul>
+    </div>
+  </div>
+  <!-- projects part -->
+  <div class="card projects" id="projects">
+    <h2>My Projects</h2>
+    <div class="gridcontainer">
+    <div class="project-container">
+      <div class="project-image-container">
+        <a href="https://stevewolf93.github.io/gallery/" target="_blank"> <h3> Gallery Wall </h3></a>
+        <img src="./images/gallery-wall.png" alt=""></div>
+    </div>
+    <div class="project-container">
+      <div class="project-image-container">
+        <a href="https://stevewolf93.github.io/Login/" target="_blank"> <h3> Login Page </h3></a>
+        <img src="./images/login.PNG" alt=""></div>
+    </div>
+    <div class="project-container">
+      <div class="project-image-container">
+        <a href="https://stevewolf93.github.io/singlePager/" target="_blank"> <h3> Landing Page </h3></a>
+        <img src="./images/single-pager.PNG" alt=""></div>
+    </div>
+    <div class="project-container">
+      <div class="project-image-container">
+        <a href="https://stevewolf93.github.io/youtube-clone/" target="_blank"> <h3> Youtube Clone wip</h3></a>
+        <img src="./images/clone.PNG" alt=""></div>
+    </div>
+    <div class="project-container">
+      <div class="project-image-container">
+        <a href="https://stevewolf93.github.io/gallery/" target="_blank"> <h3> Gallery Wall </h3></a>
+        <img src="./images/gallery-wall.png" alt=""></div>
+    </div>
+    <div class="project-container">
+      <div class="project-image-container">
+        <a href="https://stevewolf93.github.io/gallery/" target="_blank"> <h3> Gallery Wall </h3></a>
+        <img src="./images/gallery-wall.png" alt=""></div>
+    </div>
+  </div>
+  </div>
+  <!-- contact part -->
+  <div class="card contact" id="contact">
+    <h2>How to contact me:</h2>
+    <!-- another container for flex direction change -->
+    <div class="contact-container">
+      <!-- classic form, without functionality yet -->
+    <form action="">
+      <input type="text" name="username" id="" placeholder="Your Name">
+      <input type="email" name="email-adress" id="" placeholder="Your E-Mail">
+      <textarea name="" id="" cols="30" rows="10" placeholder="Send me a message..."></textarea>
+      <input type="submit" name=""></button>
+    </form>
+    <!-- some ways to keep updated on projects or contact me via email -->
+    <div class="contact-info">
+      <!-- another container for flex direction change -->
+      <div>
+        <h3>Shoot me an E-mail:</h3>
+        <p>steve.wolf93(at)gmail.com</p>
+      </div>
+        <!-- another container for flex direction change -->
+      <div>
+        <h3>Or visit my Github:</h3>
+        <a href="https://github.com/stevewolf93" target="_blank">Stevewolf93</a>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- footer for symetry kinda visual pleasing  -->
+  <footer> 
+  </footer>
+  <!-- script given from premade structure by Hadi (Teacher) -->
     <script src="./scripts/index.js"></script>
   </body>
 </html>
